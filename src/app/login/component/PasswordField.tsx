@@ -1,7 +1,8 @@
 import React from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 interface PasswordFieldProps {
-  icon?: React.ReactNode; 
+  icon?: React.ReactNode;
   show: boolean;
   toggle: () => void;
   value: string;
@@ -18,9 +19,10 @@ export default function PasswordField({
   onEnter,
 }: PasswordFieldProps) {
   return (
-    <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+    <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
       {icon && <div className="px-3 text-gray-400">{icon}</div>}
       <input
+        name="password"
         type={show ? "text" : "password"}
         placeholder="Password"
         value={value}
@@ -31,9 +33,10 @@ export default function PasswordField({
       <button
         type="button"
         onClick={toggle}
-        className=" text-gray-500 hover:text-gray-700"
+        aria-label={show ? "Hide password" : "Show password"}
+        className=" text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
-        {show ? "🙈" : "👁"}
+        {show ? <FiEyeOff size={18} /> : <FiEye size={18} />}
       </button>
     </div>
   );
