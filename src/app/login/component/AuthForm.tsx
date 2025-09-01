@@ -7,6 +7,7 @@ import { handleAuth } from "@/app/lib/handleAuth";
 import { useRouter } from "next/navigation";
 import { FiUser, FiMail, FiLock } from "react-icons/fi";
 
+
 export default function AuthForm() {
   const [mode, setMode] = useState("login");
   const [formData, setFormData] = useState({

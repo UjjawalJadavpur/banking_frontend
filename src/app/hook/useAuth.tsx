@@ -22,7 +22,7 @@ export function useAuth({ guard = false } = {}) {
 
     const payload = parseJwt(storedToken);
 
-    if (!payload || payload.exp * 1000 < Date.now()) {
+    if (payload.exp && payload.exp * 1000 < Date.now()) {
       localStorage.removeItem(TOKEN_KEY);
       if (guard) router.replace("/login");
       setLoading(false);
